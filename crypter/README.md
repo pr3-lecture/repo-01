@@ -109,7 +109,7 @@ EXGIV
 HALLO
 $ ./encrypt MYKEY ../test.txt
 IPNVADJ_]\DWSQ\UMS_L@A_@JY\E
-I\Y]OHKXFQALNVJHR^K^
+I\Y]OHKXFQALNVJHU^K^
 @P_]THQY@KHWS_\DUNK
 $ ./encrypt
 Usage: KEY [file name]
