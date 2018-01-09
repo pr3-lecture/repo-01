@@ -1,3 +1,5 @@
 output/
 decrypt.exe
 encrypt.exe
+prog.exe
+testCrypto.o

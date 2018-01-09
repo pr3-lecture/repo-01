@@ -1,4 +1,5 @@
 #include "crypto.h"
+#include "crypto.c"
 #include "testCrypto.h"
 
 #include <stdlib.h>
@@ -20,7 +21,7 @@ static int initTest(){
         return 1;
 }
 
-static const char* testToShortKeyEncrypt(){
+static const char* testToShortKey_Encrypt(){
         key.chars = "";
 
         mu_assert("Key is to short on encrypt failed", encrypt(key, "HALLO", output) == E_KEY_TOO_SHORT);
@@ -28,7 +29,7 @@ static const char* testToShortKeyEncrypt(){
         return NULL;
 }
 
-static const char* testToShortKeyDecrypt(){
+static const char* testToShortKey_Decrypt(){
         key.chars = "";
 
         mu_assert("Key is to short on decrypt failed", decrypt(key, "HALLO", output) == E_KEY_TOO_SHORT);
@@ -36,7 +37,7 @@ static const char* testToShortKeyDecrypt(){
         return NULL;
 }
 
-static const char* testEncrypt(){
+static const char* test_Encrypt(){
         memset(output, 0, strlen(output));
         key.chars = "MYKEY";
         int result = encrypt(key, "HALLO", output);
@@ -46,7 +47,7 @@ static const char* testEncrypt(){
         return NULL;
 }
 
-static const char* testDecrypt(){
+static const char* test_Decrypt(){
         memset(output, 0, strlen(output));
         key.chars = "MYKEY";
         int result = decrypt(key, "EXGIV", output);
@@ -56,7 +57,7 @@ static const char* testDecrypt(){
         return NULL;
 }
 
-static const char* testKeyIllegalCharsEncrypt(){
+static const char* testKeyIllegalChars_Encrypt(){
         key.chars = "MyKEY";
 
         mu_assert("Key is illegal on encrypt failed", encrypt(key, "WAFFEL", output) == E_KEY_ILLEGAL_CHAR);
@@ -64,7 +65,7 @@ static const char* testKeyIllegalCharsEncrypt(){
         return NULL;
 }
 
-static const char* testKeyIllegalCharsDecrypt(){
+static const char* testKeyIllegalChars_Decrypt(){
         key.chars = "MYKEy";
 
         mu_assert("Key is illegal on decrypt failed", decrypt(key, "PAPPEL", output) == E_KEY_ILLEGAL_CHAR);
@@ -88,14 +89,16 @@ static const char* testCypherIllegalChars(){
 }
 
 static const char* allTests(){
-        mu_run_test(testToShortKeyEncrypt);
-        mu_run_test(testToShortKeyDecrypt);
-        mu_run_test(testEncrypt);
-        mu_run_test(testDecrypt);
-        mu_run_test(testKeyIllegalCharsEncrypt);
-        mu_run_test(testKeyIllegalCharsDecrypt);
+        mu_run_test(testToShortKey_Encrypt);
+        mu_run_test(testToShortKey_Decrypt);
+        mu_run_test(test_Encrypt);
+        mu_run_test(test_Decrypt);
+        mu_run_test(testKeyIllegalChars_Encrypt);
+        mu_run_test(testKeyIllegalChars_Decrypt);
         mu_run_test(testMessageIllegalChars);
         mu_run_test(testCypherIllegalChars);
+
+
 
         return NULL;
 }
@@ -119,6 +122,7 @@ int main(){
                 free(output);
         }
 
+        //runs werden in testCrypto.h hochgezählt
         printf("Tests run: %d\n", tests_run);
 
         return result != 0;
