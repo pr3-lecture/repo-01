@@ -98,8 +98,6 @@ static const char* allTests(){
         mu_run_test(testMessageIllegalChars);
         mu_run_test(testCypherIllegalChars);
 
-
-
         return NULL;
 }
 

@@ -2,7 +2,6 @@
 #define RUN_H
 
 #include "crypto.h"
-
 #include <stdio.h>
 
 char* readLineFrom(FILE* in);

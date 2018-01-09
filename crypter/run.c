@@ -111,6 +111,7 @@ int main(int argc, char** argv){
                 cleanUp(filename, key, input, output);
                 return exitWithError("Error: Unsupported filename");
         }
+
         if(argc == 2 || argc == 3) {
                 key.chars = copyString(argv[1], strlen(argv[1]));
 
