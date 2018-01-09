@@ -9,12 +9,6 @@ CTESTFILES = crypto.c testCrypto.c
 
 .PHONY: all clean debug test
 
-prog: testCrypto.o
-		gcc -o prog testCrypto.o
-
-testCrypto.o: testCrypto.c
-		gcc -c testCrypto.c
-
 all: encryption decryption
 debug: CCFLAGS += -g
 debug: encryption decryption

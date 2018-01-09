@@ -179,7 +179,7 @@ int main(int argc, char** argv){
                                 else{
                                         break;
                                 }
-                        } while(true);
+                        } while(1);
 
                         /** Check if we reach the end of the file, or the encryption returned an error **/
                         if(!result && !feof(file)) {
